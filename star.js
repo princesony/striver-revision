@@ -167,6 +167,150 @@ let middle_peramid_opposite = (num = 5) => {
   
 }
 
-middle_peramid_opposite();
+// middle_peramid_opposite();
 
+
+// *          *
+// **        **
+// ***      ***
+// ****    ****
+// *****  *****
+// ************
+// *****  *****
+// ****    ****
+// ***      ***
+// **        **
+// *          *
+function printPattern() {
+    let n = 6;  // The maximum number of stars in the middle row
+
+    // Top part of the pattern
+    for (let i = 1; i <n; i++) {
+        let leftStars = '*'.repeat(i);  // Left part of the stars
+        let spaces = ' '.repeat(2 * (n - i));  // Spaces between the stars
+        let rightStars = '*'.repeat(i);  // Right part of the stars
+        console.log(leftStars + spaces + rightStars);
+    }
+
+    // Bottom part of the pattern
+    for (let i = n ; i >= 1; i--) {
+        let leftStars = '*'.repeat(i);  // Left part of the stars
+        let spaces = ' '.repeat(2 * (n - i));  // Spaces between the stars
+        let rightStars = '*'.repeat(i);  // Right part of the stars
+        console.log(leftStars + spaces + rightStars);
+    }
+}
+
+// printPattern();
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+let print_square_Star = (num= 3)=>{
+    for (let i = 0; i < num; i++) {
+        let star1 = "";
+        let space ="";
+        let star2= "";
+        star1 += "*".repeat(num-i)
+        space += " ".repeat(2*i)
+        star2 += "*".repeat(num-i)
+        console.log(star1 + space + star2);
+
+         
+    }
+
+}
+
+
+
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+
+// print_square_Star(5)
+let print_square_Star_opposite = (num = 5) => {
+    // Top part of the pattern (increasing stars and spaces)
+    for (let i = 0; i < num-1; i++) {
+        let star1 = "";
+        let space = "";
+        let star2 = "";
+        
+        // Create the left and right stars
+        star1 += "*".repeat(num - i);
+        space += " ".repeat(2 * i); // Increasing spaces
+        star2 += "*".repeat(num - i);
+
+        // Print the combined pattern for the current row
+        console.log(star1 + space + star2);
+    }
+
+    // Bottom part of the pattern (decreasing stars and spaces)
+    for (let i = num - 1; i >= 0; i--) {
+        let star1 = "";
+        let space = "";
+        let star2 = "";
+
+        // Create the left and right stars
+        star1 += "*".repeat(num - i);
+        space += " ".repeat(2 * i); // Increasing spaces
+        star2 += "*".repeat(num - i);
+
+        // Print the combined pattern for the current row
+        console.log(star1 + space + star2);
+    }
+}
+
+// Call the function with num = 5
+// print_square_Star_opposite(5);
+
+
+let print_square_Star_opposite1 = (num = 6) => {
+    // Upper part of the pattern (increasing stars and spaces)
+    for (let i = 1; i <= num; i++) {
+        let star1 = "";
+        let space = "";
+        let star2 = "";
+
+        // Create the left stars (increasing from 1 to num)
+        star1 += "*".repeat(i);
+
+        // Create the spaces (decreasing from num-1 to 0)
+        space += " ".repeat(2 * (num - i));
+
+        // Create the right stars (increasing from 1 to num)
+        star2 += "*".repeat(i);
+
+        // Print the combined pattern for the current row
+        console.log(star1 + space + star2);
+    }
+
+    // Lower part of the pattern (decreasing stars and spaces)
+    for (let i = num -1; i >= 1; i--) {
+        let star1 = "";
+        let space = "";
+        let star2 = "";
+
+        // Create the left stars (decreasing from num-1 to 1)
+        star1 += "*".repeat(i);
+
+        // Create the spaces (increasing from 1 to num-1)
+        space += " ".repeat(2 * (num - i));
+
+        // Create the right stars (decreasing from num-1 to 1)
+        star2 += "*".repeat(i);
+
+        // Print the combined pattern for the current row
+        console.log(star1 + space + star2);
+    }
+}
+
+// Call the function with num = 6
+print_square_Star_opposite1(6);
 
