@@ -1,20 +1,21 @@
+// Node class that has data and next pointer
 class Node {
-    constructor(value) {
-        this.value = value;
+    constructor(data) {
+        this.data = data;
         this.next = null;
     }
 }
 
-class LinkedList {
+class Linked_List {
     constructor() {
         this.head = null;
         this.tail = null;
     }
 
-    // adding data 
-    append(data) {
-        const newNode = new Node(data);
-        if (!this.head) {
+    // Method to add data to the linked list
+    ADD_DATA(data) {
+        let newNode = new Node(data);
+        if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -23,89 +24,77 @@ class LinkedList {
         }
     }
 
-    // display 
-    display() {
+    // Method to display the linked list
+    DISPLAY() {
         let current = this.head;
+        let data = [];
         while (current !== null) {
-            console.log(current.value);
+            // Push each node's data and next (null if no next node)
+            data.push({ data: current.data, next: current.next ? current.next.data : null });
             current = current.next;
         }
+        console.log(data);
+        return data;
     }
 
-    get(index) {
+    // Method to get node by index
+    GETBYID(INDEX) {
         let current = this.head;
         let count = 0;
-
         while (current !== null) {
-            if (count === index) {
-                return current.value;
+            if (count === INDEX) {
+                return current; // Return the node at INDEX
             }
             count++;
             current = current.next;
         }
-        return null;
+        return "kuch nahi mila gaytonde"; // If no node found at the given index
     }
 
-    // Method to clear all nodes from the list
-    clearList() {
-        this.head = this.tail = null; // Clear both head and tail
-    }
+    // Method to remove node by index
+    REMOVEBYINDEX(INDEX) {
+        let current = this.head;
+        let count = 0;
 
-    // Method to clear the data from the list
-    clearAllData() {
-        this.clearList(); // This also clears all data, same as clearList
-    }
-
-    removeAt(index) {
-        if (index < 0) {
-            return null; // Index is invalid
-        }
-
-        // If removing the head (index 0)
-        if (index === 0) {
-            this.head = this.head.next; // Move head to the next node
+        // If the index is 0, we need to remove the head node
+        if (INDEX === 0) {
+            this.head = this.head.next;
+            // If there's only one node left, we need to update tail as well
             if (this.head === null) {
-                this.tail = null; // If the list becomes empty, reset tail to null
+                this.tail = null;
             }
-            return; // Done with removal
         } else {
-            let current = this.head;
-            let count = 0;
-
-            // Traverse the list to find the node just before the one to be removed
+            // Traverse the list to find the node before the one to remove
             while (current !== null) {
-                if (count === index - 1) {
-                    // Remove the node at the given index
-                    current.next = current.next.next;
-
-                    // If the node removed was the last node, update tail
+                if (count === INDEX - 1) {
+                    current.next =  current.next.next;
+                    // If the node is the last one, update the tail
                     if (current.next === null) {
-                        this.tail = current; // Set the current node as the tail
+                        this.tail = current;
                     }
-                    return; // Done with removal
+                    break;
                 }
-                count++; // Increment count to move to the next node
-                current = current.next; // Move to the next node
+                count++;
+                current = current.next;
             }
         }
     }
+
 }
 
-const list = new LinkedList();
-list.append(10);
-list.append(20);
-list.append(30);
-list.append(40);
-list.append(50);
+// Test the Linked List
+const list = new Linked_List();
+list.ADD_DATA(10);
+list.ADD_DATA(20);
+list.ADD_DATA(30);
+list.ADD_DATA(40);
 
-console.log("Original List:");
-list.display(); // Expected Output: 10, 20, 30, 40, 50
+console.log("Display Linked List:");
+list.DISPLAY();
 
-// Get the element at index 2
-console.log("Element at index 2:", list.get(2)); // Expected Output: 30
+console.log("Get by ID (Index 2):");
+console.log(list.GETBYID(2));  // Should return node with data 30
 
-// Remove the element at index 3 (removes 40)
-list.removeAt(0);
-
-console.log("After Removal at index 3:");
-list.display(); // Expected Output: 10, 20, 30, 50
+console.log("Remove by Index (Index 1):");
+list.REMOVEBYINDEX(1);  // Remove node with data 20
+list.DISPLAY();  // Should print nodes without the node having data 20
