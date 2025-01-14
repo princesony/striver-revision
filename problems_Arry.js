@@ -132,3 +132,5 @@ function fibonacci(n) {
   console.log(fibonacci(1));  // Output: [0]
   console.log(fibonacci(0));  // Output: []
   console.log(fibonacci(8));  // Output: [0, 1, 1, 2, 3, 5, 8, 13]
+
+
