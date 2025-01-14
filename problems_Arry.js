@@ -78,3 +78,57 @@ function findUnion(arr1, arr2) {
 // let array1 = [1, 2, 3, 4, 5];
 // let array2 = [4, 5, 6, 7, 8];
 // console.log(findUnion(array1, array2)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+
+
+function maxProfit(arr) {
+    let maxPro = 0;
+    // Loop through each element in the array
+    for (let i = 0; i < arr.length; i++) {
+        // Compare with subsequent elements
+        for (let j = i + 1; j < arr.length; j++) {
+            // Check if we can make a profit (arr[j] > arr[i])
+            if (arr[j] > arr[i]) {
+                maxPro = Math.max(arr[j] - arr[i], maxPro);
+            }
+        }
+    }
+    return maxPro;
+}
+
+// Example usage
+const arr01 = [7, 1, 5, 3, 6, 4];
+const maxProfitValue = maxProfit(arr01);
+console.log("Max profit is: " + maxProfitValue);
+
+
+
+function fibonacci(n) {
+    let result = [];
+  
+    // If n is less than 1, return an empty array.
+    if (n < 1) {
+        return [];
+    }
+  
+    // If n is 1, return an array with only the first Fibonacci number (0).
+    if (n === 1) {
+        return [0];
+    }
+  
+    // Initialize the result array with the first two Fibonacci numbers [0, 1].
+    result = [0, 1];
+  
+    // Generate the Fibonacci sequence up to the n-th number.
+    for (let i = 2; i < n; i++) {
+        result.push(result[i - 1] + result[i - 2]);  // Sum of the previous two numbers
+    }
+  
+    return result;  // Return the Fibonacci sequence up to the n-th number
+  }
+  console.log(fibonacci(5));  // Output: [0, 1, 1, 2, 3]
+  console.log(fibonacci(1));  // Output: [0]
+  console.log(fibonacci(0));  // Output: []
+  console.log(fibonacci(8));  // Output: [0, 1, 1, 2, 3, 5, 8, 13]
